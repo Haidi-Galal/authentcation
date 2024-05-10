@@ -1,0 +1,79 @@
+<section  class=" overflow-hidden signup">
+   <div class="  main float-end px-3 ">
+  <div class="">
+    <h1 class="  text-center my-2  ">Create New account</h1>
+     <form [formGroup]="registerForm"  (ngSubmit)="handleForm()" >
+      <div    class="bg-light shadow rounded    p-3    border-pink     ">
+        <div class="d-flex my-3 align-items-center   ">
+       <div class=""><label class="px-3     " for="fname">firstName</label></div>
+        <div class="w-100 "><input formControlName="name"   placeholder="firstname" class="form-control   " id="fname" type="text" name="fname"/></div>
+        <div class="">        
+        <label class="px-2 " for="lname">lastName</label> </div>
+        <div class="w-100 "><input placeholder="lastname" class="form-control " id="lname" type="text" name="lname"></div>
+
+        </div>
+        <p *ngIf="registerForm.get('name')?.getError('required')&&((registerForm.get('name')?.touched||registerForm.get('name')?.value.length>0))" class="text-danger fw-bold   ">*name is required</p>
+        <p *ngIf="registerForm.get('name')?.getError('minlength')&&((registerForm.get('name')?.touched||registerForm.get('name')?.value.length>0))" class="text-danger fw-bold   ">*name must be minumum 3 characters</p>
+        <p *ngIf="registerForm.get('name')?.getError('maxlength')&&((registerForm.get('name')?.touched||registerForm.get('name')?.value.length>0))" class="text-danger fw-bold   ">*name must be maximun 10 characters</p>
+
+
+        <div class="d-flex align-items-center my-3  ">
+            <div class="w-15"><label id="email" for="email" class="px-2     ">email</label>
+            </div>
+            <div class="group   ">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="email"><path fill="#222" d="M53.42 53.32H10.58a8.51 8.51 0 0 1-8.5-8.5V19.18a8.51 8.51 0 0 1 8.5-8.5h42.84a8.51 8.51 0 0 1 8.5 8.5v25.64a8.51 8.51 0 0 1-8.5 8.5ZM10.58 13.68a5.5 5.5 0 0 0-5.5 5.5v25.64a5.5 5.5 0 0 0 5.5 5.5h42.84a5.5 5.5 0 0 0 5.5-5.5V19.18a5.5 5.5 0 0 0-5.5-5.5Z"></path><path fill="#222" d="M32 38.08a8.51 8.51 0 0 1-5.13-1.71L3.52 18.71a1.5 1.5 0 1 1 1.81-2.39L28.68 34a5.55 5.55 0 0 0 6.64 0l23.35-17.68a1.5 1.5 0 1 1 1.81 2.39L37.13 36.37A8.51 8.51 0 0 1 32 38.08Z"></path><path fill="#222" d="M4.17 49.14a1.5 1.5 0 0 1-1-2.62l18.4-16.41a1.5 1.5 0 0 1 2 2.24L5.17 48.76a1.46 1.46 0 0 1-1 .38zm55.66 0a1.46 1.46 0 0 1-1-.38l-18.4-16.41a1.5 1.5 0 1 1 2-2.24l18.39 16.41a1.5 1.5 0 0 1-1 2.62z"></path></svg>
+
+                <input formControlName="email" class="input  " type="email" placeholder="email">
+
+              </div>
+           </div>
+           <p class="text-danger fw-bold" *ngIf="registerForm.get('email')?.getError('required')&&((registerForm.get('email')?.touched||registerForm.get('email')?.value.length>0))">*email is required</p>
+           <p class="text-danger fw-bold" *ngIf="registerForm.get('email')?.getError('email')&&((registerForm.get('email')?.touched||registerForm.get('email')?.value.length>0))">*email is not correct</p>
+
+       <div class="d-flex align-items-center my-3  ">
+        <div class="w-15"><label id="password" for="password" class="px-2     ">password</label>
+        </div>
+        <div class="group   ">
+            <svg stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon">
+            <path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" stroke-linejoin="round" stroke-linecap="round"></path>
+          </svg>
+          <input formControlName="password" class="input  " type="password" placeholder="password">
+          </div>
+       </div>
+       <p class="text-danger fw-bold" *ngIf="registerForm.get('password')?.getError('required')&&((registerForm.get('password')?.touched||registerForm.get('password')?.value.length>0)) ">*password is required</p>
+       <p class="text-danger fw-bold" *ngIf="registerForm.get('password')?.getError('pattern')&&((registerForm.get('password')?.touched||registerForm.get('password')?.value.length>0))">*password must be at least 8 characters</p>
+
+       <div class="d-flex align-items-center my-3  ">
+        <div class="w-15 "><label id="re-password" for="re-password" class=" ">re-password</label>
+        </div>
+        <div class="group   ">
+            <svg stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon">
+            <path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" stroke-linejoin="round" stroke-linecap="round"></path>
+          </svg>
+          <input formControlName="password_confirmation" class="input  " type="password" placeholder="password">
+          </div>
+       </div>
+       <p class="text-danger fw-bold" *ngIf="registerForm.get('password_confirmation')?.getError('required')&&((registerForm.get('password_confirmation')?.touched||registerForm.get('password_confirmation')?.value.length>0))">*password is required</p>
+       <p class="text-danger fw-bold" *ngIf="registerForm.get('password_confirmation')?.getError('mismatch')&&((registerForm.get('password_confirmation')?.touched||registerForm.get('password_confirmation')?.value.length>0))">*password not matches</p>
+
+      <div class="d-flex  justify-content-center align-items-center ">
+        <button [disabled]="!this.registerForm.valid"  class="btn btn-pink  ">Signup</button>
+
+      </div>       
+
+
+
+
+
+
+
+      
+    </div>
+    </form>
+   
+  </div>
+  
+   </div>
+
+   
+</section>
